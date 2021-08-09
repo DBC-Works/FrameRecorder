@@ -1,0 +1,71 @@
+group 'FrameRecorder'
+version '0.1.0'
+
+apply plugin: 'java'
+
+defaultTasks 'clean', 'build', 'generateDoc'
+
+sourceCompatibility = 1.8
+
+rootProject.version=''
+buildDir='library'
+libsDirName='./'
+docsDirName='../reference'
+
+/*
+javadoc {
+  options.charSet = 'UTF-8'
+  options.encoding = 'UTF-8'
+}
+*/
+
+repositories {
+  mavenCentral()
+}
+
+configurations {
+  provided
+}
+
+sourceSets {
+  main {
+    compileClasspath += configurations.provided
+  }
+}
+
+dependencies {
+  provided group: 'org.processing', name: 'core', version: '3.3.7'
+  testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
+
+task generateDoc(type: Javadoc) {
+  source = sourceSets.main.allJava
+  classpath = project.sourceSets.main.compileClasspath
+  options.charSet = 'UTF-8'
+  options.encoding = 'UTF-8'
+}
+
+task zipDistribution(type: Zip) {
+  dependsOn(jar)
+  dependsOn(generateDoc)
+
+  from '.'
+  excludes = [
+    '.*',
+    'bin',
+    'build.gradle',
+    'gradlew',
+    'gradlew*.*',
+    'settings.gradle'
+  ]
+
+  destinationDirectory = file('..')
+  archiveVersion = '0.1.0'
+  archiveFileName =
+    'FrameRecorder-' + archiveVersion.get() + '.zip'
+  into('FrameRecorder')
+}
+
+artifacts {
+    archives zipDistribution
+}
