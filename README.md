@@ -1,3 +1,5 @@
+![workflow stats](https://github.com/DBC-Works/FrameRecorder/actions/workflows/gradle.yml/badge.svg)
+
 # FrameRecorder(Processing library)
 
 A simple video creation support library for [Processing](https://processing.org/).
