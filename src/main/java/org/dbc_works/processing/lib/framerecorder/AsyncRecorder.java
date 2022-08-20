@@ -53,7 +53,7 @@ final class AsyncRecorder extends AbstractFrameRecorder implements Recorder {
       public void run() {
         final PImage frameImage = parent.createImage(parent.width, parent.height, parent.HSB);
         frameImage.pixels = savePixels;
-        frameImage.save(String.format("%s/%10d.jpg", DIR_NAME, saveFrameCount));
+        frameImage.save(String.format("%s/%010d.jpg", DIR_NAME, saveFrameCount));
       }
     };
 
@@ -78,7 +78,22 @@ final class AsyncRecorder extends AbstractFrameRecorder implements Recorder {
     assert (0 < frameRate);
 
     final String targetPath = makeTargetPath(parent.sketchPath());
-    new FrameBinder(videoFileName, targetPath, "jpg", frameRate).bind();
+    new FrameBinder(videoFileName, targetPath, "jpg", null, frameRate).bind();
+  }
+
+  /**
+   * Bind image files to movie
+   * 
+   * @param videoFileName Video file name
+   * @param soundFileName Sound file name
+   * @param frameRate     Frame rate
+   */
+  public void bindTo(String videoFileName, String soundFileName, int frameRate) {
+    assert (videoFileName != null && 0 < videoFileName.length());
+    assert (0 < frameRate);
+
+    final String targetPath = makeTargetPath(parent.sketchPath());
+    new FrameBinder(videoFileName, targetPath, "jpg", soundFileName, frameRate).bind();
   }
 
   /**

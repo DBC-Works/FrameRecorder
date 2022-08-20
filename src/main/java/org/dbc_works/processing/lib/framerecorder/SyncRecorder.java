@@ -49,7 +49,22 @@ final class SyncRecorder extends AbstractFrameRecorder implements Recorder {
     assert (0 < frameRate);
 
     final String targetPath = makeTargetPath(parent.sketchPath());
-    new FrameBinder(videoFileName, targetPath, imgExt, frameRate).bind();
+    new FrameBinder(videoFileName, targetPath, imgExt, null, frameRate).bind();
+  }
+
+  /**
+   * Bind image files to movie
+   * 
+   * @param videoFileName Video file name
+   * @param soundFileName Sound file name
+   * @param frameRate     Frame rate
+   */
+  public void bindTo(String videoFileName, String soundFileName, int frameRate) {
+    assert (videoFileName != null && 0 < videoFileName.length());
+    assert (0 < frameRate);
+
+    final String targetPath = makeTargetPath(parent.sketchPath());
+    new FrameBinder(videoFileName, targetPath, imgExt, soundFileName, frameRate).bind();
   }
 
   /**
