@@ -7,9 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2022-08-20
+
+- Add function to merge sound file into generated video
+
 ## [0.1.0] - 2021-08-10
 
 First release.
 
-[unreleased]: https://github.com/DBC-Works/working-time-around/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/DBC-Works/working-time-around/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/DBC-Works/working-time-around/releases/tag/v0.2.0
 [0.1.0]: https://github.com/DBC-Works/working-time-around/releases/tag/v0.1.0

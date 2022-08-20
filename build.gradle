@@ -1,5 +1,5 @@
 group 'FrameRecorder'
-version '0.1.0'
+version '0.2.0'
 
 apply plugin: 'java'
 
@@ -54,13 +54,14 @@ task zipDistribution(type: Zip) {
     '.*',
     'bin',
     'build.gradle',
+    'gradle',
     'gradlew',
     'gradlew*.*',
     'settings.gradle'
   ]
 
   destinationDirectory = file('..')
-  archiveVersion = '0.1.0'
+  archiveVersion = '0.2.0'
   archiveFileName =
     'FrameRecorder-' + archiveVersion.get() + '.zip'
   into('FrameRecorder')
